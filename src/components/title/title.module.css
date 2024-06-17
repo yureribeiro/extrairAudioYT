@@ -1,0 +1,45 @@
+.titleContainer {
+  position: relative;
+
+}
+
+.title {
+  z-index: 2;
+  font-size: 3rem;
+  font-weight: bold;
+  color: transparent;
+  background: var(--textGradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.icon {
+  position: absolute;
+  top: -1.5rem;
+  right: -5rem;
+  rotate: 15deg;
+  width: 7rem;
+  height: max-content;
+  z-index: -1;
+}
+
+
+@media (max-width: 768px) {
+  .titleContainer  {
+    width: 100%;
+    padding: 1rem 0 1rem 2rem;
+  }
+  .title {
+    font-size: 1.7rem;
+    text-align: flex-start;
+  }
+  .icon {
+    position: absolute;
+    top: -1rem;
+    right: 1.5rem;
+    rotate: 15deg;
+    width: 7rem;
+    height: max-content;
+    z-index: -1;
+  }
+}

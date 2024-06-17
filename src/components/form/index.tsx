@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Button from '../button';
 import styles from './form.module.css';
 import Result from '../result';
+import Dialog from '../dialog';
 
 export default function Form(): JSX.Element {
   const [url, setUrl] = useState('');
@@ -45,6 +46,7 @@ export default function Form(): JSX.Element {
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.form}>
+      <Dialog />
         <label htmlFor="url" className={styles.label}>
           Url do video
           <input
@@ -52,14 +54,16 @@ export default function Form(): JSX.Element {
             type="text"
             name="url"
             id="url"
-            placeholder="url"
+            placeholder="https://www.youtube.com....."
             onChange={(ev) => setUrl(ev.target.value)}
             value={url}
           />
         </label>
-        <Button loading={pending} />
+        <div className={styles.contentButtons}>
+          <Button loading={pending} />
+          {result && <Result url={result} />}
+        </div>
       </form>
-      {result && <Result url={result} />}
     </>
   );
 }

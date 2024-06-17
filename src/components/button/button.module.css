@@ -1,14 +1,14 @@
 .button {
-  align-self: flex-end;
-  background-color: var(--secondary);
   cursor: pointer;
-  border: .1rem solid var(--borderPrimary);
+  background-color: var(--secondary);
   color: var(--buttonText);
+  border: .1rem solid var(--borderPrimary);
   border-radius: .4rem;
   padding: .6rem 2rem;
   outline: none;
+  align-self: flex-end;
+  font-size: 1rem;
   font-weight: 500;
-  font-size: .9rem;
   transition: .3s;
 }
 .button:hover {

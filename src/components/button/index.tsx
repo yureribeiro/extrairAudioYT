@@ -6,6 +6,8 @@ export default function Button({ loading }: { loading?: boolean }): JSX.Element 
   const { pending } = useFormStatus()
 
   return (
-    <button type="submit" disabled={pending || loading} className={styles.button}>{pending || loading ? 'extraindo...' : 'extrair'}</button>
+    <button type="submit" disabled={pending || loading} className={styles.button}>
+      {pending || loading ? 'extraindo...' : 'extrair'}
+    </button>
   )
 }

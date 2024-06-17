@@ -43,3 +43,11 @@
 .input:hover {  
   border: .1rem solid var(--primaryHover);
 }
+
+.contentButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+}
