@@ -17,6 +17,7 @@ export default function SwithTheme() {
           id="theme"
           className={styles.themeSelect}
           value={theme}
+          onChange={toogleTheme}
         >
           <option value="light">Light</option>
           <option value="dark">Dark</option>

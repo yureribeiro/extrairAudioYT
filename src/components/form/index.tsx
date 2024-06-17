@@ -1,13 +1,13 @@
-'use client'
+'use client';
 import { useState } from 'react';
-import Button from '../button'
-import styles from './form.module.css'
+import Button from '../button';
+import styles from './form.module.css';
 import Result from '../result';
 
 export default function Form(): JSX.Element {
   const [url, setUrl] = useState('');
   const [result, setResult] = useState('');
-
+  const [pending, setPending] = useState(false);
 
   const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -16,31 +16,50 @@ export default function Form(): JSX.Element {
       return;
     }
 
-    const response = await fetch("http://localhost:3000/api/download", {
-      method: "POST",
-      body: url
-    });
+    try {
+      setPending(true);
+      const response = await fetch('http://localhost:3000/api/download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: url,
+      });
 
-    const data = await response.json();
-    setResult(data.firstUrl);
-  }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+
+      setResult(downloadUrl);
+      console.log('Result:', downloadUrl);
+    } catch (error) {
+      console.error('Fetch error:', error);
+    } finally {
+      setPending(false);
+    }
+  };
 
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="url" className={styles.label}>Url do video
+        <label htmlFor="url" className={styles.label}>
+          Url do video
           <input
             className={styles.input}
             type="text"
             name="url"
+            id="url"
             placeholder="url"
-            value={url}
             onChange={(ev) => setUrl(ev.target.value)}
+            value={url}
           />
         </label>
-        <Button />
+        <Button loading={pending} />
       </form>
-      <Result url={result} />
+      {result && <Result url={result} />}
     </>
-  )
+  );
 }

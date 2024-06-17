@@ -22,7 +22,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }: {children: React.ReactNode}) => {
   const [theme, setTheme] = useState('dark');
-  console.log(theme)
+
   useEffect(() => {
     async function getTheme() {
       const hasTheme = localStorage.getItem('theme')
