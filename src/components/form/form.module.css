@@ -1,0 +1,45 @@
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--primary);
+  padding: 1rem;
+  border-radius: .5rem;
+  color: var(--text);
+  box-shadow: var(--boxShadow);
+  width: 100%;
+  border: .1rem solid var(--borderPrimary);
+  max-width: 25rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  color: var(--textOpacity);
+  font-size: .94rem;
+  font-weight: 500;
+  width: 100%;
+}
+
+.input {
+  padding: .7rem;
+  border: .1rem solid var(--borderPrimary);
+  border-radius: .4rem;
+  outline: none;
+  color: var(--inputText);
+  background-color: var(--secondary);
+  transition: .3s;
+} .input::placeholder {
+  color: var(--inputText);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.input:focus,
+.input:hover {  
+  border: .1rem solid var(--primaryHover);
+}

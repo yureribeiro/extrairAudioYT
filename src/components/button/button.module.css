@@ -1,0 +1,16 @@
+.button {
+  align-self: flex-end;
+  background-color: var(--secondary);
+  cursor: pointer;
+  border: .1rem solid var(--borderPrimary);
+  color: var(--buttonText);
+  border-radius: .4rem;
+  padding: .6rem 2rem;
+  outline: none;
+  font-weight: 500;
+  font-size: .9rem;
+  transition: .3s;
+}
+.button:hover {
+  background-color: var(--primaryHover);
+}

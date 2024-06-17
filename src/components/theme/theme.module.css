@@ -1,0 +1,26 @@
+.container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  border: .1rem solid var(--borderPrimary);
+  border-radius: .4rem;
+  padding: .5rem;
+  background-color: var(--primary);
+  box-shadow: var(--boxShadow);
+}
+
+.button {
+  position: relative;
+  cursor: pointer;
+}
+
+.themeSelect {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
