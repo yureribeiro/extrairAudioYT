@@ -8,7 +8,7 @@ import { useTheme } from '@/context/themeContext'
 
 export default function SwithTheme() {
   const { theme, toogleTheme } = useTheme()
-  console.log('theme: ', theme)
+
   return (
     <div className={styles.container}>
       <div className={styles.button}>
