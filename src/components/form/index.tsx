@@ -18,7 +18,7 @@ export default function Form(): JSX.Element {
 
     try {
       setPending(true);
-      const response = await fetch('http://localhost:3000/api/download', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/download`, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
