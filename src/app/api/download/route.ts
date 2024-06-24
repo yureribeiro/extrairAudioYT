@@ -1,15 +1,15 @@
-import { NextResponse } from 'next/server'; // Importação do módulo NextResponse para lidar com respostas HTTP no Next.js
-import ytdl from 'ytdl-core'; // Importação do módulo ytdl-core para baixar vídeos do YouTube
-import { Readable } from 'stream'; // Importação da classe Readable do módulo nativo 'stream' do Node.js
+import { NextResponse } from 'next/server'; 
+import ytdl from 'ytdl-core'; // ytdl-core para baixar vídeos do YouTube
+import { Readable } from 'stream'; //  módulo nativo 'stream' do Node.js
 
 export async function POST(req: Request) {
   try {
-    const body = await req.text(); // Obtém o corpo da requisição como texto
-    const videoUrl = body.trim(); // Remove espaços em branco do início e do fim do texto
+    const body = await req.text(); 
+    const videoUrl = body.trim(); 
 
     // Verifica se a URL do vídeo não foi fornecida ou não é válida
     if (!videoUrl || !ytdl.validateURL(videoUrl)) {
-      return NextResponse.json({ message: 'Invalid YouTube URL' }, { status: 400 }); // Retorna uma resposta JSON com status 400 (Bad Request) se a URL for inválida
+      return NextResponse.json({ message: 'Invalid YouTube URL' }, { status: 400 }); 
     }
 
     // Obtém um fluxo de áudio do vídeo do YouTube usando ytdl-core
@@ -23,7 +23,10 @@ export async function POST(req: Request) {
     const buffer = Buffer.concat(chunks);
 
     // Criando um Blob a partir do Buffer, que será a resposta do download
-    const blob = new Blob([buffer], { type: 'audio/mpeg' });
+    // windows type: audio/mpeg 
+    // pendrive: audio/mp3
+    // mac: audio/m4a
+    const blob = new Blob([buffer], { type: 'audio/mp4' });
 
     // Retorna uma nova resposta HTTP com o Blob como corpo
     return new Response(blob, {

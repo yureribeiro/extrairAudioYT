@@ -45,8 +45,8 @@ export default function Form(): JSX.Element {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={styles.form}>
       <Dialog />
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label htmlFor="url" className={styles.label}>
           Url do video
           <input
